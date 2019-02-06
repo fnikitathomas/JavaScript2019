@@ -65,7 +65,7 @@ npm install -g npm@latest
 If you do not have Node.js installed, type this is your terminal:
 
 ```bash
-brew install node
+brew install node@10
 ```
 
 When it’s finished, type `node -v` to confirm that it has installed.
