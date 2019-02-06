@@ -4,7 +4,8 @@
  */
 
 function createAnArray() {
-  var array = [];
+  var array = []
+  array.push("python","lisp","malbolge")
   /*** Add three items to the array ****/
   return array;
 }
@@ -17,6 +18,8 @@ function createAnArray() {
 
 function accessingAnArray() {
   var cars = ["BMW", "Honda", "Civic"];
+  var [car] = cars
+  return car
 }
 
 /**
@@ -28,7 +31,13 @@ function accessingAnArray() {
  * highestNumber([5, 1, 2, 3, 10]) // [10]
  *
  **/
-function highestNumber(array) {}
+function highestNumber(array) {
+  let m = -Infinity
+  for(var i = 0;i < array.length;i++){
+    if (array[i] > m) m = array[i]
+  }
+  return m
+}
 
 /**
  * Combine an array by using the spread operator
@@ -39,7 +48,9 @@ function highestNumber(array) {}
  * combineArray(['Japan','China','India'], ['USA','UK']) // ['Japan','China','India','USA','UK']
  **/
 
-function combineArray(array1, array2) {}
+function combineArray(array1, array2) {
+  return [...array1,...array2]
+}
 
 /**
  * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses or run.
@@ -50,7 +61,10 @@ function combineArray(array1, array2) {}
  *
  */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  let s = str.toLowerCase().replace(/[\W]/g,'')
+  return s === [...s].reverse().join('')
+}
 
 /**
  * Make an object that represents a dog called myDog which contains the keys
@@ -59,7 +73,15 @@ function isPalindrome(str) {}
  * @return {object}
  */
 
-function createDogObject() {}
+function createDogObject() {
+  var myDog = {
+    name : "Spot",
+    legs : 4,
+    tails : 1,
+    owners : ["Dick","Jane"]
+  }
+  return myDog
+}
 
 /**
  * Access testObj and return the value for hat inside clothes (which should be ballcap)
@@ -73,9 +95,9 @@ function accessObject() {
   };
   // Only change code below this line
 
-  var hatValue = clothes; // Change only this line of code
+  var {hat} = clothes; // Change only this line of code
 
-  return hatValue;
+  return hat;
 }
 
 /**
@@ -91,6 +113,9 @@ function createStudentObject() {
     skills: []
   };
   // Only change code below this line.
+  student.firstname = "Nikita"
+  student.lastname  = "Thomas"
+  student.skills.push("coder","artist","fighter")
 
   return student;
 }
@@ -111,6 +136,7 @@ function returnObjectProperties() {
   };
   //Add code here
   //hint you need to return an array
+  return Object.keys(dog)
 }
 
 /**
@@ -120,7 +146,10 @@ function returnObjectProperties() {
  * @return {object} obj1 and obj2 combined
  */
 
-function combineObject(obj1, obj2) {}
+function combineObject(obj1, obj2) {
+  var newObj = {...obj1, ...obj2}
+  return newObj
+}
 
 module.exports = {
   createAnArray,
