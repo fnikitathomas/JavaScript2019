@@ -74,7 +74,7 @@ describe('Data structures', () => {
       lastName: 'Kent'
     });
   });
-  it.only('should remove all duplicate values', () => {
+  it('should remove all duplicate values', () => {
     const unique = removeDuplicates([
       2,
       3,
