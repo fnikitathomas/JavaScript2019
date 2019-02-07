@@ -15,7 +15,7 @@ const {
   removeDuplicates
 } = require('../../exercises/02-data-structures/data-structures.js');
 
-describe('Data structures', () => {
+describe.only('Data structures', () => {
   it('should return an array with three values', () => {
     const newArr = createAnArray();
     expect(newArr.length).to.equal(3);
@@ -74,7 +74,7 @@ describe('Data structures', () => {
       lastName: 'Kent'
     });
   });
-  it('should remove all duplicate values', () => {
+  it.only('should remove all duplicate values', () => {
     const unique = removeDuplicates([
       2,
       3,
@@ -96,6 +96,6 @@ describe('Data structures', () => {
       4,
       5
     ]);
-    expect(unique).to.be.equalTo([2, 3, 4, 5, 6, 7, 32, 5]);
+    expect(unique).to.be.equalTo([2, 3, 4, 5, 6, 7, 32]);
   });
 });
