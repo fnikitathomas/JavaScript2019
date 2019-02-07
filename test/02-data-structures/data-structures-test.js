@@ -15,7 +15,7 @@ const {
   removeDuplicates
 } = require('../../exercises/02-data-structures/data-structures.js');
 
-describe.only('Data structures', () => {
+describe('Data structures', () => {
   it('should return an array with three values', () => {
     const newArr = createAnArray();
     expect(newArr.length).to.equal(3);
