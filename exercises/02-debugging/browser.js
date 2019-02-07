@@ -34,7 +34,7 @@ function getMessage() {
   var message = "";
 
   for (var i = 1; i < 10; i++) {
-    mesage = message + "...";
+    message = message + "...";
   }
 
   message = message + "\n"; // New line

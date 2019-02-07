@@ -18,7 +18,9 @@
  * @return {number} sum of two numbers
  */
 
-function add(a, b) {}
+function add(a, b) {
+  return a + b
+}
 
 /**
  * Complete the function multiply, which should multiply two numbers
@@ -27,7 +29,9 @@ function add(a, b) {}
  * @return {number} product of two numbers
  */
 
-function multiply() {}
+function multiply(a, b) {
+  return a * b
+}
 
 /**
  * Debug this function using either `console.log` or
@@ -39,11 +43,11 @@ function getMessage() {
   var message = "";
 
   for (var i = 1; i < 10; i++) {
-    mesage = message + "...";
+    message = message + "...";
   }
-
+  console.log(message)
   message = message + "\n"; // New line
-
+console.log(message)
   var fruits = ["apple", "kiwi", "banana", "orange", "blueberry"];
   for (var j = 0; j < fruits.length; j++) {
     message = message + String(i) + " " + fruits[j] + "\n";
@@ -58,6 +62,7 @@ function getMessage() {
   for (var z = 1; z < 10; z++) {
     message = message + "...";
   }
+
 
   return message;
 }
