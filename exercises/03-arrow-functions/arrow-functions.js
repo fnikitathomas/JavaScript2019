@@ -22,10 +22,12 @@ exports.before = {
  * @param {number} a
  * @param {number} b
  * @returns {number} the product of a times b
- */
+ *
 function multiply(a, b) {
   return a * b;
 }
+*/
+var multiply = (a,b) => a * b
 
 /**
  * Refactor the following to use ES6 arrow syntax.
@@ -34,7 +36,7 @@ function multiply(a, b) {
  * @returns an array where each number in the array is twice of what it was before
  * @example
  * doubleNumbers([1, 3, 5]); // [2, 6, 10]
- */
+ *
 function doubleNumbers(array) {
   var newArray = [];
   for (var num of array) {
@@ -42,12 +44,19 @@ function doubleNumbers(array) {
   }
   return newArray;
 }
+*/
+var doubleNumbers = (array) => {
+  var newArray = []
+  for(var num of array){
+    newArray.push(num * 2)
+  }
+  return newArray
+}
 
 /**
  * Refactor wait and the function inside of window.setTimeout below
  * to use ES6 arrow syntax
- */
-
+ *
 var isFinished = false;
 
 function wait() {
@@ -55,7 +64,12 @@ function wait() {
     isFinished = true;
   }, 100);
 }
+*/
+var isFinished = false
 
+var wait = () => {
+  setTimeout(() => isFinished = true,100)
+}
 /**
  * Ignore this. This is for testing your answer.
  */
