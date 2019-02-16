@@ -20,6 +20,11 @@ const calculator = () => {
    * that should return the value of "sum" above.
    * @returns {number} the value of sum
    */
+  var sum = 0;
+  return {
+    x0 : (num) => sum += num,
+    y0 : () => sum
+  }
 };
 
 /**
@@ -47,7 +52,22 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
-const guessingGame = numberOfRounds => {};
+const guessingGame = numberOfRounds => {
+  var answer = Math.floor(Math.random() * 11)
+  return (guess) =>{
+    if(guess === answer) return "You got it!"
+    else if(numberOfRounds === 0) return "No more guesses. The answer was " + answer
+    else if(guess > answer){
+      numberOfRounds--
+      return "You're too high!"
+    }
+    else if(guess < answer){
+      numberOfRounds--
+      return "You're too low!"
+    } 
+  }
+};
+
 
 module.exports = {
   calculator,

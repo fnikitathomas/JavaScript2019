@@ -13,7 +13,9 @@
  * @param {number} a
  * @param {number} b
  */
-const multiplier = (a, b) => {};
+const multiplier = (a, b) => {
+  return (a && b) ? a * b : (b) => a * b
+};
 
 module.exports = {
   multiplier
