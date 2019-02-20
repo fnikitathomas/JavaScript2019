@@ -18,7 +18,7 @@ const printer = (str) => {
  * @param {function} callback printer function
  */
 const printNames = (array,callback) => {
-  for(var el of array){
+  for(var el of array){// Yes I could use [].forEach but I learned more with this
     callback(el)
   }
 };

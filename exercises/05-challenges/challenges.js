@@ -13,7 +13,10 @@
  *
  */
 
-const getIndexToIns = (array, num) => {};
+const getIndexToIns = (array, num) => {
+  array.push(num) // push() returns the length of the array
+  return array.sort((a,b) => a - b).indexOf(num) 
+};
 
 /**
  * Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both.
@@ -28,7 +31,9 @@ const getIndexToIns = (array, num) => {};
  *  @example [], ["snuffleupagus", "cookie monster", "elmo"] should return ["snuffleupagus", "cookie monster", "elmo"]
  */
 
-const diffArray = (arr1, arr2) => {};
+const diffArray = (arr1, arr2) => {
+  return [...arr1.filter((obj) => arr2.indexOf(obj) == -1),...arr2.filter((obj) => arr1.indexOf(obj) == -1)]
+};
 
 module.exports = {
   diffArray,
