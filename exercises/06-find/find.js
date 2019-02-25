@@ -5,7 +5,16 @@
  * @param {function} callback
  * @returns {mixed} a single value in the array
  */
-const find = (arr, callback) => {};
+const find = (arr, callback) => {
+  let found, l = arr.length
+  for(var i = 0;i < l;i++){
+    //console.log(i)
+    //console.log(arr[i])
+    if(callback(arr[i],i,arr))
+      found = arr[i]
+  }
+  return found
+};
 
 /**
  * Find and return the matching user in an array of user objects
