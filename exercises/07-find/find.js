@@ -8,10 +8,10 @@
 const find = (arr, callback) => {
   let found, l = arr.length
   for(var i = 0;i < l;i++){
-    //console.log(i)
-    //console.log(arr[i])
-    if(callback(arr[i],i,arr))
+    if(callback(arr[i],i,arr)){
       found = arr[i]
+      break
+    }
   }
   return found
 };
@@ -35,7 +35,8 @@ const find = (arr, callback) => {
  * findUser(users, 1025);
  * // { id: 1025, username:"newyorkfarmer", email: "johndoe@example.com" }
  */
-const findUser = (arr, id) => {};
+const findUser = (arr, id) => arr.find((obj) => obj.id === id)
+
 
 module.exports = {
   find,
