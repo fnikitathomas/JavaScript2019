@@ -45,15 +45,33 @@ describe("Unit Testing", () => {
    * Write a unit test for `subtract` here.
    */
 
+  describe("subtract", () => {
+    it("should subtract two numbers", () => {
+      const difference = subtract(7,8);
+      expect(difference).to.equal(-1)
+    })
+  })
+
   /**
    * Write two tests for `isEvenNumber` here.
    * Use a a different assertion than `.equal()`
    * @see https://www.chaijs.com/api/bdd/
    */
 
+  describe("isEvenNumber", () => {
+    it("should return a boolean value", () => {
+      const remainder = isEvenNumber(8);
+      expect(remainder).to.be.a('boolean')
+    })
+    it("should be false for odd numbers", () => {
+      const remainder = isEvenNumber(3)
+      expect(remainder).to.be.false
+    })
+  }) 
+
   describe("findAdults", () => {
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will find, in a multidimensional array, all the people older than 18", () => {
+    it("will find, in a multidimensional array, all the people older than 18", () => {
       /**
        * Complete the unit test for findAdults here.
        * Hint: Arrays are passed by reference, so you will need to call on a test that deeply compares values.
@@ -64,10 +82,12 @@ describe("Unit Testing", () => {
         { name: "Aiden", age: 10 },
         { name: "Chloe", age: 16 }
       ];
+      const p = findAdults(people)
+      expect(p).to.eql([{ name: "Janet", age: 43 }])
     });
 
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will return an empty array if no adults are found", () => {
+    it("will return an empty array if no adults are found", () => {
       /**
        * Complete the unit test for findAdults here, where you use a different assertion than `.equal()`
        * @see https://www.chaijs.com/api/bdd/
@@ -77,6 +97,8 @@ describe("Unit Testing", () => {
         { name: "Emma", age: 17 },
         { name: "Ethan", age: 8 }
       ];
+      const p = findAdults(people)
+      expect(p).to.eql([])
     });
   });
 });
