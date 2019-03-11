@@ -1,5 +1,5 @@
-const { departmentStores } = require("./recursion-departmentStores-data");
-const { tree } = require("./recursion-tree-data");
+const { departmentStores } = require('./recursion-departmentStores-data');
+const { tree } = require('./recursion-tree-data');
 
 /**
  * Using recursion, find the object in the node tree that has a given id.
@@ -20,26 +20,43 @@ const { tree } = require("./recursion-tree-data");
  *    hidden: false
  * }
  */
-
-/**
- * The value on the right hand-side of a for...of statement must be
- * an iterable object or you will generate a TypeError, the problem
- * being as the loop traverses the array: the values of `data` are
- * varying with each iteration as either an object or an array. The
- * short circuit evaluation ensures that if `data` is really not an
- * array evaluation will continue with the empty array because it's
- * both truthy and iterable.
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/is_not_iterable
- */
-
 const findId = (data, id) => {
-  for(let obj of data || []){
-    if(obj.id === id) return obj
-    let f = findId(obj.children, id)
-    if(f) return f
-  }
-}
+  // let node = data.reduce((a, element, index) => {
+  //   console.log(a);
+  //   if (a) {
+  //     return a;
+  //   }
+  //   if (element.id === id) {
+  //     return element;
+  //   } else if (element.children) {
+  //     return findId(element.children, id);
+  //   }
+  // }, null);
+  // return node;
+  // let element = null;
+  // return data.reduce((a, element, index) => {
+  //   if (a) {
+  //     return a;
+  //   }
+  //   if (element.id === id) {
+  //     return element;
+  //   } else if (element.children) {
+  //     return findId(element.children, id);
+  //   }
+  // }, null);
 
+  for (let i in data) {
+    if (data[i].id == id) {
+      console.log('here', data[i]);
+      return data[i];
+    } else if (data[i].children) {
+      console.log(data[i]);
+      return findId(data[i].children, id);
+    }
+  }
+  console.log(test);
+};
+console.log(findId(tree, 5777777));
 /**
  * Using recursion, remove the object from the node tree that has a given id.
  * You will be looping through the data in *recursion-delete-store.json*
@@ -69,15 +86,16 @@ const findId = (data, id) => {
  */
 
 const deleteStore = (stores, id) => {
-  for(let obj of stores || []){
-    if(obj.id === id) return obj
-    let f = deleteStore(obj.branches, id)
-    if(f){
-      obj.branches.splice(obj.branches.findIndex((e) => e.id === id),1) // splice mutates original!
-      return stores
+  return stores.reduce((arr, item) => {
+    if (item.id != id) {
+      if (item.branches) {
+        item.branches = deleteStore(item.branches, id);
+      }
+      arr.push(item);
     }
-  }
-}
+    return arr;
+  }, []);
+};
 
 module.exports = {
   findId,
