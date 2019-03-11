@@ -1,117 +1,108 @@
-import React, { Component } from 'react';
-import './Address.css';
+import React, { Component } from "react";
+import "./Address.css";
+// Import data from "assets/countries.js" and "assets/states.js" here
+
 class Address extends Component {
   state = {
-    firstName: null,
-    lastName: null,
-    City: null,
-    State: null,
-    City: null,
-    ZipCode: null
+    firstName: "",
+    lastName: "",
+    addressLine1: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    ZipCode: ""
   };
 
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="row">
-            <form className="form-horizontal">
-              <fieldset>
-                <div className="control-group">
-                  <label id="first" className="control-label">
-                    First Name
-                  </label>
-                  <input
-                    id="full-name"
-                    name="full-name"
-                    type="text"
-                    placeholder="full name"
-                    className="input-xlarge"
-                  />
-                  <div className="control-group">
-                    <label className="control-label">Last Name</label>
-                    <input
-                      id="full-name"
-                      name="full-name"
-                      type="text"
-                      placeholder="last name"
-                      className="input-xlarge"
-                    />
-                  </div>
-                </div>
-                <div className="control-group">
-                  <label className="control-label">Address Line 1</label>
-                  <div className="controls">
-                    <input
-                      id="address-line1"
-                      name="address-line1"
-                      type="text"
-                      placeholder="address line 1"
-                      className="input-xlarge"
-                    />
-                    <p className="help-block">
-                      Street address, P.O. box, company name, c/o
-                    </p>
-                  </div>
-                </div>
-
-                <div className="control-group">
-                  <label className="control-label">City / Town</label>
-                  <div className="controls">
-                    <input
-                      id="city"
-                      name="city"
-                      type="text"
-                      placeholder="city"
-                      className="input-xlarge"
-                    />
-                  </div>
-                  <div className="control-group">
-                    <label className="control-label">
-                      State / Province / Region
-                    </label>
-                    <div className="controls">
-                      {/* Create a state select box using the states array located in the assets folder */}
-                      <select className="input-xlarge" />
-                      <p className="help-block" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="control-group">
-                  <label className="control-label">Zip / Postal Code</label>
-                  <div className="controls">
-                    <input
-                      id="postal-code"
-                      name="postal-code"
-                      type="text"
-                      placeholder="zip or postal code"
-                      className="input-xlarge"
-                    />
-                    <p className="help-block" />
-                  </div>
-                </div>
-
-                <div className="control-group">
-                  <label className="control-label">Country</label>
-                  <div className="controls">
-                    <select
-                      id="country"
-                      name="country"
-                      className="input-xlarge"
-                    />
-                    {/* refactor this select to import the countries array located in assets folder and create a dropdown by looping through countries array
-                     */}
-                  </div>
-                </div>
-              </fieldset>
-            </form>
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-          </div>
+      <form className="container mt-4">
+        <div className="form-group">
+          <label htmlFor="firstName" className="control-label">
+            First Name
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            className="form-control"
+          />
         </div>
-      </div>
+        <div className="form-group">
+          <label htmlFor="lastName" className="control-label">
+            Last Name
+          </label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="addressLine1" className="control-label">
+            Address Line 1
+          </label>
+          <input
+            id="addressLine1"
+            name="addressLine1"
+            type="text"
+            className="form-control"
+          />
+          <p className="help-block text-muted">
+            Street address, P.O. box, company name, c/o
+          </p>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="city" className="control-label">
+            City / Town
+          </label>
+          <input id="city" name="city" type="text" className="form-control" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="state" className="control-label">
+            State / Province / Region
+          </label>
+          {/* Loop through the states you imported here */}
+          <select id="state" name="state" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="postalCode" className="control-label">
+            Zip / Postal Code
+          </label>
+          <input
+            id="postalCode"
+            name="postalCode"
+            type="text"
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="country" className="control-label">
+            Country
+          </label>
+          {/* Loop through the countries you imported here */}
+          <select id="country" name="country" className="form-control" />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+
+        {/*
+         * Find a way to only display this once the form has been submitted.
+         * Hint: You will need to change this "this.condtion" below to something else
+         */}
+        {this.condition && (
+          <div className="card card-body bg-light mt-4 mb-4">
+            Results:
+            <ul className="list-unstyled mb-0">
+              {/* Add <li></li> tags here */}
+            </ul>
+          </div>
+        )}
+      </form>
     );
   }
 }
