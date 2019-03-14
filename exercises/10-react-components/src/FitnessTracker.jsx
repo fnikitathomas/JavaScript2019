@@ -24,9 +24,9 @@ import "./FitnessTracker.css";
 // You will need to loop through "activities" data in your React components below
 import activities from "./FitnessTrackerActivities.json";
 
-let FitnessActivity = ({items}) => {
+function FitnessActivity(props) {
   return <div>
-        {items.map((obj,idx) => {
+        {props.items.map((obj,idx) => {
         console.log(obj)
         return (
           <div key={idx+""+(Math.random() * 1)} className="FitnessActivity">
@@ -40,7 +40,7 @@ let FitnessActivity = ({items}) => {
   </div>
 }
 
-let FitnessTracker = () => {
+function FitnessTracker(){
   return <FitnessActivity items={activities}/>;
 }
 
