@@ -44,5 +44,7 @@ function FitnessTracker(){
   return <FitnessActivity items={activities}/>;
 }
 
+
+
 export default FitnessTracker;
 
