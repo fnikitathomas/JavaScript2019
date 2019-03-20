@@ -5,6 +5,7 @@ import React from "react";
  * and have some way of identifying the text in the ListItem component.
  */
 function ListItem(props) {
+  //props.reset()
   return (
     <li className="list-group-item">
       {props.children}
@@ -12,6 +13,7 @@ function ListItem(props) {
         type="button"
         className="btn btn-link float-right"
         aria-label="Delete"
+        onClick={props.reset}
       >
         x
       </button>
