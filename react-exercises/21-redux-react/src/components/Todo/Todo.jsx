@@ -14,6 +14,7 @@ class Todo extends Component {
     userInput: "",
     todos: []
   };
+  
   setUserInput = userInput => {
     this.setState({ userInput: userInput });
   };
@@ -21,23 +22,25 @@ class Todo extends Component {
    * This will be passed down from the container as props instead
    * (but you still need to prevent the form from submitting and pass up user input)
    */
-  addTodo = e => {
+    addTodo = e => {
     e.preventDefault();
-    this.setState({
-      todos: [...this.state.todos, this.state.userInput],
-      userInput: ""
-    });
+    this.props.addTodo(this.state.userInput)
+    // this.setState({
+    //   todos: [...this.state.todos, this.state.userInput],
+    //   userInput: ""
+    // });
   };
   /**
    * This will be passed down from the container as props instead
    * (but you still need to pass up the todo index)
    */
   deleteTodo = todoIndex => {
-    this.setState({
-      todos: this.state.todos.filter((item, index) => {
-        return index !== todoIndex;
-      })
-    });
+    this.props.deleteTodo(todoIndex)
+    // this.setState({
+    //   todos: this.state.todos.filter((item, index) => {
+    //     return index !== todoIndex;
+    //   })
+    // });
   };
   render() {
     return (
@@ -67,7 +70,7 @@ class Todo extends Component {
         </form>
         <ul className="list-group">
           {/* The todos will be passed down as props */}
-          {this.state.todos.map((text, index) => {
+          {this.props.todos.map((text, index) => {
             const key = `todo-item-${index}`;
             return (
               <ListItem

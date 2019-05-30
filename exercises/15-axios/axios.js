@@ -14,11 +14,11 @@
  * @param {Object} data the entire AJAX response
  */
 const populateDropDown = data => {
-  $("#dropdown").empty();
-  $.each(data.results, function(i, p) {
+  // $("#dropdown").empty(); You can't choose Rick if you're 'empty'
+  data.forEach(p => { // This is what you need to replace
     $("#dropdown").append(
       $("<option></option>")
-        .val(p.name)
+        .val(p.image)
         .html(p.name)
     );
   });
@@ -27,3 +27,31 @@ const populateDropDown = data => {
 /**
  * Axios here
  */
+// Change "reqres.in" to demo throwing an error
+
+let b0 = []
+const paginatedAPI = (uri, arr) => {
+   axios.get(uri)
+  .then(resp => {
+    populateDropDown(resp.data.results)
+    arr = [...arr,...resp.data.results] // cache all the results
+    if(resp.data.info.next){
+      paginatedAPI(resp.data.info.next,arr)
+    }
+    b0 = arr
+  })
+  .catch(data => {
+    const htmlStr = '<div class="text-danger">We\'re sorry, but an unexpected error occurred</div>';
+    $('.container').append(htmlStr);
+  });
+}
+
+paginatedAPI('https://rickandmortyapi.com/api/character',b0)
+
+$('#dropdown').change((e) => {
+  let imgSrc  = $(e.target).val()
+  if(imgSrc){
+    $('#img-location').html(`<img src="${imgSrc}">`)
+  }
+  else $('#img-location').html('')
+})

@@ -18,10 +18,20 @@ const reducer = (
         ...state,
         count: state.count + 1
       };
-    /**
+    case types.DECREASE_COUNT:
+      return {
+        ...state,
+        count: state.count - 1
+      }
+    case types.ADD_TODO_ITEM:
+      return {
+        ...state,
+        todoInput: 
+      }
+    /**:
      * Add additional case statements here
      */
-    default:
+    default
       return state;
   }
 };

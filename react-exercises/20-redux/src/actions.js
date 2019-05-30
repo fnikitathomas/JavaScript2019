@@ -7,7 +7,9 @@ export const increaseCount = () => {
 };
 
 export const decreaseCount = () => {
-  // Complete me
+  return {
+    type: types.DECREASE_COUNT
+  }
 };
 
 export const toggle = () => {
@@ -23,5 +25,8 @@ export const setInput = todoInput => {
 };
 
 export const addTodo = () => {
-  // Complete me
+  return {
+    type: types.ADD_TODO_ITEM,
+    todoInput: todoInput
+  }
 };

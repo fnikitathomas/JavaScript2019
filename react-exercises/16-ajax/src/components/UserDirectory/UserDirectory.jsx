@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./UserDirectory.css";
+import axios from 'axios'
 
 /**
  * Please read the README.md first.
@@ -33,9 +34,33 @@ import "./UserDirectory.css";
 
 class UserDirectory extends Component {
   state = {
-    users: []
+    users: [],
+    isLoading: true,
+    hasError: false
   };
+
+  componentDidMount() {
+    axios({ method: "GET", url: "https://randomuser.me/api?results=500&inc=name,email,picture"})
+      .then(response => { // e.g. { data: data: { [{ first_name: ... },{ first_name: ... }] } }
+        console.log(response)
+        this.setState({
+          users: response.data.results,
+          isLoading: false,
+          hasError: false
+        });
+      })
+      .catch(() => this.setState({ hasError: true, isLoading: false }));
+  }
+
+  handleChange = e => {
+    console.log(e.target.value)
+    let updatedList = this.state.users.filter(u => {
+      if(u.name.first[0] === e.target.value.toLowerCase() || u.name.last[0] === e.target.value.toLowerCase()) console.log("yup")
+    })
+  }
+
   render() {
+    if(this.state.isLoading) return <div  className="text-center">... Loading</div>
     return (
       <div className="UserDirectory">
         <div className="Search">
@@ -44,6 +69,7 @@ class UserDirectory extends Component {
             placeholder="Search..."
             aria-label="Search"
             className="search"
+            onChange={e => this.handleChange(e)}
           />
         </div>
         <div className="UserDirectory-users">

@@ -76,7 +76,7 @@ export default class App extends React.Component {
     const { allUsers, isLoading, users } = this.state;
 
     return !isLoading ? (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         {this.renderHeader()}
         <FlatList
           data={users.length > 0 ? users : allUsers}
